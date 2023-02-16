@@ -25,7 +25,12 @@ const SearchParams = () => {
 
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -60,7 +65,7 @@ const SearchParams = () => {
         <label htmlFor="breed">
           Breed
           <select
-            disabled={!breeds.length}
+            disabled={breeds.length === 0}
             id="breed"
             value={breed}
             onChange={(e) => {
